@@ -1,0 +1,26 @@
+//题目2-3
+#include<stdio.h>
+int ABC(int a[],int x, int left, int right)
+{
+	int middle;
+	if(left>right)
+		return -1;
+	middle=(left+right)/2;
+	if(x==a[middle])
+		return middle;
+	else if(x<a[middle])
+		return ABC(a,x,left,middle-1);
+	else
+		return ABC(a,x,middle+1,right);
+}
+
+void main(void){
+	int a[]={1,2,3,4,6,7,8,9,10,11};
+	int bn;
+	int x=5;
+	bn=ABC(a,x,0,9);
+	if(bn==-1)
+		printf("x不在数组a中\n");
+	else 
+		printf("x在数组a中，下标为%d\n",bn);
+}
